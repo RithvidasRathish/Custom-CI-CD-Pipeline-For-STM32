@@ -1,0 +1,50 @@
+name: STM32 CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+# ──────────────────────────────────────────────
+# JOB 1 — Static Analysis (Cppcheck)
+# ──────────────────────────────────────────────
+  static-analysis:
+    name: 🔍 Cppcheck Static Analysis
+    runs-on: ubuntu-latest
+    container:
+      image: rithvidas/stm32f401-toolchain:latest  # your Docker Hub image
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Cppcheck
+        run: |
+          cppcheck \
+            --enable=all \
+            --error-exitcode=1 \
+            --suppress=missingIncludeSystem \
+            --suppress=unusedFunction \
+            --suppress=unmatchedSuppression \
+            --suppress=preprocessorErrorDirective \
+            --suppress=comparePointers:Cube_Directory/Drivers/CMSIS/Include/cmsis_gcc.h \
+            -DSTM32F401xC \
+            -DUSE_HAL_DRIVER \
+            -D__GNUC__ \
+            -D__ARM_ARCH_7EM__ \
+            -I Core/Inc \
+            -I Cube_Directory/Drivers/STM32F4xx_HAL_Driver/Inc \
+            -I Cube_Directory/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy \
+            -I Cube_Directory/Drivers/CMSIS/Device/ST/STM32F4xx/Include \
+            -I Cube_Directory/Drivers/CMSIS/Include \
+            Core/Src/main.c \
+            2>&1 | tee cppcheck_report.txt
+
+      - name: Upload Cppcheck Report
+        uses: actions/upload-artifact@v4
+        if: always()   # upload even if cppcheck found errors
+        with:
+          name: cppcheck-report
+          path: cppcheck_report.txt
