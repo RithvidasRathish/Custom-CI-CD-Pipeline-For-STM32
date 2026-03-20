@@ -14,8 +14,8 @@ jobs:
   
     name: 🔍 Cppcheck Static Analysis
     runs-on: ubuntu-latest
-    # container:
-    #   image: rithvidas/stm32f401-toolchain:latest  # your Docker Hub image
+    container:
+      image: rithvidas/stm32f401-toolchain:latest  # your Docker Hub image
 
     steps:
       - name: Install cppcheck
