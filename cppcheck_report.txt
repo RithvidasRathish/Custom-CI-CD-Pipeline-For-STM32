@@ -1,0 +1,54 @@
+Checking Core/Src/main.c ...
+Checking Core/Src/main.c: STM32F401xC=1;USE_HAL_DRIVER=1;__GNUC__=1;__ARM_ARCH_7EM__=1...
+Core/Src/main.c:508:10: style: The scope of the variable 'rcv_len' can be reduced. [variableScope]
+ uint8_t rcv_len = 0;
+         ^
+Core/Src/main.c:1034:14: style: Local variable 'active_bank_number' shadows outer variable [shadowVariable]
+     uint8_t active_bank_number;
+             ^
+Core/Src/main.c:81:9: note: Shadowed declaration
+uint8_t active_bank_number; /*Variable to store active bank number ACTIVE_BANK_1 or ACTIVE_BANK_2*/
+        ^
+Core/Src/main.c:1034:14: note: Shadow variable
+     uint8_t active_bank_number;
+             ^
+Core/Src/main.c:662:49: style: Parameter 'pBuffer' can be declared with const [constParameter]
+void bootloader_handle_flash_erase_cmd(uint8_t *pBuffer)
+                                                ^
+Core/Src/main.c:789:40: style: Parameter 'pData' can be declared with const [constParameter]
+uint8_t bootloader_verify_crc(uint8_t *pData, uint32_t len, uint32_t crc_host)
+                                       ^
+Core/Src/main.c:508:18: style: Variable 'rcv_len' is assigned a value that is never used. [unreadVariable]
+ uint8_t rcv_len = 0;
+                 ^
+Core/Src/main.c:616:22: style: Variable 'bl_cid_num' is assigned a value that is never used. [unreadVariable]
+ uint16_t bl_cid_num = 0;
+                     ^
+Core/Src/main.c:640:20: style: Variable 'rdp_level' is assigned a value that is never used. [unreadVariable]
+ uint8_t rdp_level = 0x00;
+                   ^
+Core/Src/main.c:664:26: style: Variable 'erase_status' is assigned a value that is never used. [unreadVariable]
+    uint8_t erase_status = 0x00;
+                         ^
+Core/Src/main.c:718:23: style: Variable 'write_status' is assigned a value that is never used. [unreadVariable]
+ uint8_t write_status = 0x00;
+                      ^
+Core/Src/main.c:968:23: style: Variable 'write_status' is assigned a value that is never used. [unreadVariable]
+ uint8_t write_status = 0x00;
+                      ^
+1/6 files checked 41% done
+Checking Core/Src/stm32f4xx_hal_msp.c ...
+Checking Core/Src/stm32f4xx_hal_msp.c: STM32F401xC=1;USE_HAL_DRIVER=1;__GNUC__=1;__ARM_ARCH_7EM__=1...
+2/6 files checked 48% done
+Checking Core/Src/stm32f4xx_it.c ...
+Checking Core/Src/stm32f4xx_it.c: STM32F401xC=1;USE_HAL_DRIVER=1;__GNUC__=1;__ARM_ARCH_7EM__=1...
+3/6 files checked 55% done
+Checking Core/Src/syscalls.c ...
+Checking Core/Src/syscalls.c: STM32F401xC=1;USE_HAL_DRIVER=1;__GNUC__=1;__ARM_ARCH_7EM__=1...
+4/6 files checked 62% done
+Checking Core/Src/sysmem.c ...
+Checking Core/Src/sysmem.c: STM32F401xC=1;USE_HAL_DRIVER=1;__GNUC__=1;__ARM_ARCH_7EM__=1...
+5/6 files checked 66% done
+Checking Core/Src/system_stm32f4xx.c ...
+Checking Core/Src/system_stm32f4xx.c: STM32F401xC=1;USE_HAL_DRIVER=1;__GNUC__=1;__ARM_ARCH_7EM__=1...
+6/6 files checked 100% done
