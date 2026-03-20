@@ -18,13 +18,13 @@ jobs:
       image: rithvidas/stm32f401-toolchain:latest  # your Docker Hub image
 
     steps:
-      - name: Install cppcheck
-        run: |
-         apt-get update
-         apt-get install -y cppcheck
+      # - name: Install cppcheck
+      #   run: |
+      #    apt-get update
+      #    apt-get install -y cppcheck
 
-      - name: Verify cppcheck installed
-        run: which cppcheck && cppcheck --version
+      # - name: Verify cppcheck installed
+      #   run: which cppcheck && cppcheck --version
 
     
       - name: Checkout code
