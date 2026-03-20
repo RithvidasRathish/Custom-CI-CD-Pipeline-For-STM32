@@ -11,12 +11,22 @@ jobs:
 # JOB 1 — Static Analysis (Cppcheck)
 # ──────────────────────────────────────────────
   static-analysis:
+  
     name: 🔍 Cppcheck Static Analysis
     runs-on: ubuntu-latest
     # container:
     #   image: rithvidas/stm32f401-toolchain:latest  # your Docker Hub image
 
     steps:
+      - name: Install cppcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cppcheck
+
+      - name: Verify cppcheck installed
+        run: which cppcheck && cppcheck --version
+
+    
       - name: Checkout code
         uses: actions/checkout@v4
 
