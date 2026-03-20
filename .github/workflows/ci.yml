@@ -63,6 +63,20 @@ jobs:
           name: cppcheck-report
           path: cppcheck_report.txt
 
+# ──────────────────────────────────────────────
+# JOB 2 — Flash (your Linux PC)
+# only runs if Job 1 passes
+# ──────────────────────────────────────────────
+  flash:
+    name: Flash STM32F401
+    runs-on: self-hosted          # YOUR PC
+    needs: [static-analysis]      # ← waits for Job 1 to pass
+    if: github.ref == 'refs/heads/main'  # only on main branch
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Flash STM32
         run: make -f custom_make.make flash
           
