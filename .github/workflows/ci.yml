@@ -60,3 +60,7 @@ jobs:
         with:
           name: cppcheck-report
           path: cppcheck_report.txt
+          
+      - name: Flash Board
+        run: make -f custom_make.make flash
+      
