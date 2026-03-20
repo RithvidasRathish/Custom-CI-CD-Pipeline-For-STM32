@@ -54,9 +54,15 @@ jobs:
           #   Core/Src/main.c \
           #   2>&1 | tee cppcheck_report.txt
 
+          
+
       - name: Upload Cppcheck Report
         uses: actions/upload-artifact@v4
         if: always()   # upload even if cppcheck found errors
         with:
           name: cppcheck-report
           path: cppcheck_report.txt
+
+      - name: Flash STM32
+        run: make -f custom_make.make flash
+          
