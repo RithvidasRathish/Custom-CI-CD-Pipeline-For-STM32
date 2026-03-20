@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Cppcheck
-        run: make cppcheck
+        run: make -f custom_make.make cppcheck
           # cppcheck \
           #   --enable=all \
           #   --error-exitcode=1 \
